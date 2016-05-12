@@ -1,12 +1,12 @@
-FROM ubuntu:14.04
-MAINTAINER Harsh Vakharia <harshjv@gmail.com>
+FROM ubuntu:16.04
+MAINTAINER adin
 
 ENV HOME /root
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update && apt-get install -y wget
+RUN apt-get update && apt-get install -y wget inkscape
 
-ADD https://raw.githubusercontent.com/harshjv/docker-texlive-2015/master/install-tl-ubuntu install-tl-ubuntu
+ADD https://raw.githubusercontent.com/scottkosty/install-tl-ubuntu/master/install-tl-ubuntu install-tl-ubuntu
 RUN chmod +x install-tl-ubuntu
 
 RUN ./install-tl-ubuntu
