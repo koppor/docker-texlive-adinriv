@@ -4,7 +4,7 @@ MAINTAINER adin
 ENV HOME /root
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update && apt-get install -y wget inkscape
+RUN apt-get update && apt-get install -y wget
 
 ADD https://raw.githubusercontent.com/scottkosty/install-tl-ubuntu/master/install-tl-ubuntu install-tl-ubuntu
 RUN chmod +x install-tl-ubuntu
