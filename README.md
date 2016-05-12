@@ -1,21 +1,16 @@
-# Dockerised Texlive 2015
-
+# Dockerised Texlive (Latest)
 
 ## See available tex binaries
 
-    docker run --rm harshjv/texlive-2015 ls -lah /opt/texbin/
+    docker run --rm adnrv/texlive ls -lah /opt/texbin/
 
 
 ## Build `tex` documents
 
 
-### (Optional) Update texlive packages
+### Update texlive packages
 
-#### `Dockerfile`
-
-    FROM harshjv/texlive-2015
-    RUN tlmgr update --all
-
+See git@github.com:adinriv/docker-texlive-ink.git
 
 #### Build image
 
@@ -24,7 +19,7 @@
 
 ### Build `tex` documents
 
-> Use `harshjv/texlive-2015` instead of `texlive` if skipped optional step above
+Use 
 
     docker run --rm -it -v $(pwd):/var/texlive texlive pdflatex document.tex
 
