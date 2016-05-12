@@ -10,7 +10,7 @@
 
 ### Update texlive packages
 
-See [git@github.com:adinriv/docker-texlive-ink.git]
+See https://github.com/adinriv/docker-texlive-ink
 
 #### Build image
 
