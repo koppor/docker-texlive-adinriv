@@ -18,6 +18,9 @@ RUN apt-get clean && \
 
 ENV PATH /opt/texbin:$PATH
 
+RUN tlmgr update --all
+
 VOLUME /var/texlive
 
 WORKDIR /var/texlive
+
