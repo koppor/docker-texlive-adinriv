@@ -4,12 +4,13 @@ MAINTAINER adin
 ENV HOME /root
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update && apt-get install -y wget
+RUN apt-get update && apt-get install -y wget git
 
-ADD https://raw.githubusercontent.com/scottkosty/install-tl-ubuntu/master/install-tl-ubuntu install-tl-ubuntu
-RUN chmod +x install-tl-ubuntu
+RUN git clone https://github.com/scottkosty/install-tl-ubuntu.git
 
-RUN ./install-tl-ubuntu
+RUN chmod +x ./install-tl-ubuntu/install-tl-ubuntu
+
+RUN ./install-tl-ubuntu/install-tl-ubuntu
 
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/* \
