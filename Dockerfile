@@ -4,22 +4,44 @@ MAINTAINER adin
 ENV HOME /root
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update && apt-get install -y wget git
-
-RUN git clone https://github.com/scottkosty/install-tl-ubuntu.git
-
-RUN chmod +x ./install-tl-ubuntu/install-tl-ubuntu
-
-RUN ./install-tl-ubuntu/install-tl-ubuntu
-
-RUN apt-get clean && \
+RUN apt-get update -qq &&\
+    apt-get install -y \
+      equivs \
+      fontconfig \
+      git \
+      gcc \
+      libfile-fcntllock-perl \
+      libwww-perl \
+      parallel \
+      unzip \
+      wget \
+    &&\
+    apt-get autoclean &&\
+    apt-get autoremove &&\
     rm -rf /var/lib/apt/lists/* \
            /tmp/* \
            /var/tmp/*
 
-ENV PATH /opt/texbin:$PATH
+COPY install-tl-ubuntu.patch .
 
-RUN tlmgr update --all
+RUN git clone https://github.com/scottkosty/install-tl-ubuntu.git &&\
+    chmod +x ./install-tl-ubuntu/install-tl-ubuntu &&\
+    patch ./install-tl-ubuntu/install-tl-ubuntu < install-tl-ubuntu.patch &&\
+    ./install-tl-ubuntu/install-tl-ubuntu &&\
+
+    /opt/texbin/tlmgr option docfiles 0 &&\
+    /opt/texbin/tlmgr update --all &&\
+
+    apt-get autoclean &&\
+    apt-get autoremove &&\
+    rm -rf `/opt/texbin/kpsewhich -var-value TEXMFDIST`/doc \
+           `/opt/texbin/kpsewhich -var-value TEXMFDIST`/source \
+           install-tl-* \
+           /var/lib/apt/lists/* \
+           /tmp/* \
+           /var/tmp/*
+
+ENV PATH /opt/texbin:$PATH
 
 VOLUME /var/texlive
 
