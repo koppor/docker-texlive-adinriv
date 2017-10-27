@@ -18,6 +18,7 @@ RUN tlmgr install \
       biblatex \
       biblatex-ieee \
       genmisc \
+      IEEEtran \
       latexmk \
       logreq \
       siunitx \
