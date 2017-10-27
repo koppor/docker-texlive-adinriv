@@ -21,4 +21,5 @@ RUN tlmgr install \
       latexmk \
       logreq \
       siunitx \
-      tracklang
+      tracklang \
+      xcite
