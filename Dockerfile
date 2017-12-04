@@ -17,6 +17,7 @@ RUN tlmgr install \
       biber \
       biblatex \
       biblatex-ieee \
+      fontawesome \
       genmisc \
       IEEEtran \
       latexmk \
