@@ -1,7 +1,8 @@
 FROM adnrv/minimal-texlive
 MAINTAINER adin
 
-RUN tlmgr install \
+RUN   tlmgr update --self &&\
+      tlmgr install \
       # Collections of basic stuff
       collection-basic \
       collection-fontsrecommended \
